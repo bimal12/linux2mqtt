@@ -117,9 +117,6 @@ class SataDrive(HardDrive):
         """ATA Drive specific score function depending on results from smartctl."""
         score = 0
         score += self.attributes.get("Reallocated Sector Count", 0) * 2
-        if self.attributes.get("Reallocated Sector Count", 0) > 50:
-            score += 50
-
         score += self.attributes.get("Current Pending Sector", 0) * 3
         if self.attributes.get("Current Pending Sector", 0) > 10:
             score += 30
