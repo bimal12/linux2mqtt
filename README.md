@@ -125,17 +125,19 @@ Enabling this option will cause increased network traffic in order to update pac
 `linux2mqtt --name Server1 -vvvvv --interval 60 --harddrives`
 
 #### Scoring Methodology
+
 The score to status conversion is:
+
 | Status  | Score |
-|----|----|
+| ------- | ----- |
 | HEALTHY | <= 10 |
-| GOOD | <= 20 |
+| GOOD    | <= 20 |
 | WARNING | <= 50 |
-| FAILING | > 50 |
+| FAILING | > 50  |
 
 ##### ATA Scoring
 
-| SMART Attribute               | Penalty  | Notes                          |
+| SMART Attribute               | Penalty | Notes                          |
 | ----------------------------- | ------- | ------------------------------ |
 | Reallocated Sector Count      | ×2      | Indicates remapped bad sectors |
 | Current Pending Sector        | ×3      | Sectors waiting reallocation   |
@@ -147,7 +149,7 @@ The score to status conversion is:
 
 ##### NVME Scoring
 
-| SMART Attribute                       | Penalty | Notes                                      |
+| SMART Attribute                 | Penalty | Notes                                      |
 | ------------------------------- | ------- | ------------------------------------------ |
 | critical_warning ≠ 0            | +100    | Any critical SMART flag triggers high risk |
 | percent_used > 70%              | +10     | NAND wear indicator                        |
@@ -158,7 +160,6 @@ The score to status conversion is:
 | warning_temp_time > 0           | +10     | Drive exceeded warning temp                |
 | critical_temp_time > 0          | +30     | Drive exceeded critical temp               |
 | available_spare below threshold | +30     | Spare blocks depleted                      |
-
 
 ## Logging
 
